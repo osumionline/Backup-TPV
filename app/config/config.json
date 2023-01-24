@@ -1,0 +1,12 @@
+{
+	"name": "Osumi TPV Backup",
+	"db": {
+		"host": "localhost",
+		"user": "tpvbackup",
+		"pass": "9xn01m0C*",
+		"name": "tpvbackup"
+	},
+	"base_url": "https://tpvbackup.osumi.dev",
+	"default_title": "Osumi TPV Backup",
+	"log_level": "ALL"
+}
