@@ -1,0 +1,16 @@
+<header>
+  <a class="btn-icon" href="/subscription/{{subscription_id}}">
+    <img src="/img/back.svg" alt="Volver">
+  </a>
+  <span>{{subscription_name}} - {{account_name}}</span>
+</header>
+
+<main class="main-center">
+  <div class="card card-big">
+    <div class="card-header">Copias de seguridad</div>
+    <div class="card-content">
+      {{list}}
+    </div>
+  </div>
+  <button class="btn btn-warn margin-top" type="button" id="delete">Eliminar cuenta</button>
+</main>

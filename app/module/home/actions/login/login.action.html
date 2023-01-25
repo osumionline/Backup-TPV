@@ -1,0 +1,24 @@
+<header>
+  <span>Osumi TPV Backup</span>
+</header>
+
+<main class="main-center">
+  <div class="card">
+    <div class="card-header">Iniciar sesión</div>
+    <form id="login-frm" action="/login" method="post">
+      <div class="card-content">
+        <p>
+          <input type="text" name="user" id="user" value="" placeholder="Nombre de usuario">
+        </p>
+        <p>
+          <input type="password" name="pass" id="pass" value="" placeholder="Contraseña">
+        </p>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-raised" type="submit" name="login_btn">Continuar</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div class="error-message" style="display: {{error}};">Error: El nombre de usuario o contraseña son incorrectos.</div>

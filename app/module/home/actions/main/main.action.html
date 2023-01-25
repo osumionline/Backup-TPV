@@ -1,0 +1,36 @@
+<header>
+  <div class="btn-icon">
+    <img src="/img/menu.svg" alt="Abrir menu">
+  </div>
+  <span>Osumi TPV Backup</span>
+</header>
+
+<main class="main-center">
+  <div class="card card-big">
+    <div class="card-header">Suscripciones</div>
+    <div class="card-content">
+      {{list}}
+    </div>
+  </div>
+</main>
+
+<button class="btn-float" id="add-btn">
+  <img src="/img/add.svg" alt="Añadir suscripción">
+</button>
+
+<div class="modal-bg modal-hide" id="add-subscription">
+  <div class="card">
+    <div class="card-header">Nueva suscripción</div>
+    <form id="add-subs-frm" action="/addSubscription" method="post">
+      <div class="card-content">
+        <p>
+          <input type="text" name="name" id="name" value="" placeholder="Nombre de la suscripción">
+        </p>
+      </div>
+      <div class="card-actions">
+        <button class="btn" type="button" name="subs_cancel" id="cancel">Cancelar</button>
+        <button class="btn btn-raised" type="submit" name="subs_continue" id="continue">Continuar</button>
+      </div>
+    </form>
+  </div>
+</div>

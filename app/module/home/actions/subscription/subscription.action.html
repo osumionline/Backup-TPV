@@ -1,0 +1,48 @@
+<header>
+  <a class="btn-icon" href="/main">
+    <img src="/img/back.svg" alt="Volver">
+  </a>
+  <span>{{name}}</span>
+</header>
+
+<main class="main-center">
+  <div class="card-row">
+    <div class="card card-padding">
+      <span class="flex">API KEY: <span id="api-key">{{api_key}}</span></span>
+      <img class="btn-img" src="/img/copy.svg" id="copy-api-key">
+    </div>
+    <div class="card card-padding">
+      <span class="flex">Expira: {{expires}}</span>
+      <img class="btn-img" src="/img/calendar.svg">
+    </div>
+  </div>
+  <div class="card card-big">
+    <div class="card-header">Cuentas</div>
+    <div class="card-content">
+      {{list}}
+    </div>
+  </div>
+  <button class="btn btn-warn margin-top" type="button" id="delete">Eliminar suscripción</button>
+</main>
+
+<button class="btn-float" id="add-btn">
+  <img src="/img/add.svg" alt="Añadir cuenta">
+</button>
+
+<div class="modal-bg modal-hide" id="add-account">
+  <div class="card">
+    <div class="card-header">Nueva cuenta</div>
+    <form id="add-acc-frm" action="/addAccount" method="post">
+      <input type="hidden" name="id-subscription" id="id-subscription" value="{{id}}">
+      <div class="card-content">
+        <p>
+          <input type="text" name="name" id="name" value="" placeholder="Nombre de la cuenta">
+        </p>
+      </div>
+      <div class="card-actions">
+        <button class="btn" type="button" name="acc_cancel" id="cancel">Cancelar</button>
+        <button class="btn btn-raised" type="submit" name="acc_continue" id="continue">Continuar</button>
+      </div>
+    </form>
+  </div>
+</div>

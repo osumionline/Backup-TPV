@@ -8,5 +8,10 @@
 	},
 	"base_url": "https://tpvbackup.osumi.dev",
 	"default_title": "Osumi TPV Backup",
-	"log_level": "ALL"
+	"log_level": "ALL",
+	"css": ["common"],
+	"extra": {
+		"secret": "38fb33a05cd70a88fef63006956b421c62ae244b",
+		"files": "/var/www/vhosts/osumi.dev/tpvbackup.osumi.dev/files/"
+	}
 }

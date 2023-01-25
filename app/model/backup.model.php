@@ -37,4 +37,25 @@ class Backup extends OModel {
 
 		parent::load($model);
 	}
+
+	/**
+	 * Función para obtener la ruta de un archivo de una copia de seguridad
+	 */
+	public function getFilePath(): string {
+		global $core;
+		return $core->config->getExtra('files').$this->get('id').'.sql';
+	}
+
+	/**
+	 * Función para borrar una copia de seguridad, el archivo y su registro
+	 *
+	 * @return void
+	 */
+	public function deleteFull(): void {
+		$file_path = $this->getFilePath();
+		if (file_exists($file_path)) {
+			unlink($file_path);
+		}
+		$this->delete();
+	}
 }

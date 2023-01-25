@@ -5,7 +5,7 @@ namespace OsumiFramework\App\Module;
 use OsumiFramework\OFW\Routing\OModule;
 
 #[OModule(
-	actions: ['index'],
+	actions: ['login', 'main', 'subscription', 'account', 'loginForm', 'addSubscription', 'addAccount', 'deleteSubscription'],
 	type: 'html'
 )]
 class homeModule {}
