@@ -11,7 +11,7 @@ use OsumiFramework\App\Component\List\BackupListComponent;
 #[OModuleAction(
 	url: '/account/:id',
 	filters: ['login'],
-	inlineJS: ['subscription']
+	inlineJS: ['account']
 )]
 class accountAction extends OAction {
 	/**
@@ -26,6 +26,7 @@ class accountAction extends OAction {
 		$subscription = $account->getSubscription();
 		$backup_list_component = new BackupListComponent(['list' => $account->getBackups()]);
 
+		$this->getTemplate()->add('id',                $account->get('id'));
 		$this->getTemplate()->add('subscription_id',   $subscription->get('id'));
 		$this->getTemplate()->add('subscription_name', $subscription->get('name'));
 		$this->getTemplate()->add('account_name',      $account->get('name'));

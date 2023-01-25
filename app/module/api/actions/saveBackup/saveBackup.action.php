@@ -51,6 +51,9 @@ class saveBackupAction extends OAction {
 						// Guardo el archivo recibido
 						$file_path = $backup->getFilePath();
 						file_put_contents($file_path, $file);
+
+						$account->set('last_copy_at', $backup->get('created_at', 'Y-m-d H:i:s'));
+						$account->save();
 					}
 					else {
 						$status = 'error';

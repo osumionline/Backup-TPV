@@ -136,8 +136,10 @@ class Account extends OModel {
 
 	/**
 	 * Función para obtener el número de backups de una cuenta
+	 *
+	 * @return int Número de backups
 	 */
-	public function getNumBackups(int $id_account): int {
+	public function getNumBackups(): int {
 		$db = new ODB();
 		$sql = "SELECT COUNT(*) AS `num` FROM `backup` WHERE `id_account` = ?";
 		$db->query($sql, [$this->get('id')]);
@@ -149,6 +151,8 @@ class Account extends OModel {
 
 	/**
 	 * Función para obtener la copia de seguridad más antigua de una cuenta
+	 *
+	 * @return Backup Copia de seguridad más antigua
 	 */
 	public function getOldestBackup(): Backup {
 		$db = new ODB();
