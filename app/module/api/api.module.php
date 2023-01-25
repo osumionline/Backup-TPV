@@ -5,7 +5,7 @@ namespace OsumiFramework\App\Module;
 use OsumiFramework\OFW\Routing\OModule;
 
 #[OModule(
-	actions: [],
+	actions: ['saveBackup', 'getBackups', 'getBackup'],
 	type: 'json',
 	prefix: '/api'
 )]

@@ -38,6 +38,42 @@ class Backup extends OModel {
 		parent::load($model);
 	}
 
+	private ?Account $account = null;
+
+	/**
+	 * Obtiene la cuenta a la que pertenece el backup
+	 *
+	 * @return Account Cuenta a la que pertenece el backup
+	 */
+	public function getAccount(): Account {
+		if (is_null($this->account)) {
+			$this->loadAccount();
+		}
+		return $this->account;
+	}
+
+	/**
+	 * Guarda la cuenta a la que pertenece el backup
+	 *
+	 * @param Account $a Cuenta a la que pertenece el backup
+	 *
+	 * @return void
+	 */
+	public function setAccount(Account $a): void {
+		$this->account = $a;
+	}
+
+	/**
+	 * Carga la cuenta a la que pertenece el backup
+	 *
+	 * @return void
+	 */
+	public function loadAccount(): void {
+		$account = new Account();
+		$account->find(['id' => $this->get('id_account')]);
+		$this->setAccount($account);
+	}
+
 	/**
 	 * Función para obtener la ruta de un archivo de una copia de seguridad
 	 */

@@ -30,4 +30,23 @@ class generalService extends OService {
 
 		return $ret;
 	}
+
+	/**
+	 * Función para obtener la lista completa de copias de seguridad de una suscripción
+	 *
+	 * @param Subscription $subscription Suscripción de la que obtener la lista
+	 *
+	 * @return array Lista de backups
+	 */
+	public function getSubscriptionBackupList(): array {
+		$list = [];
+
+		$accounts = $subscription->getAccounts();
+		foreach ($accounts as $account) {
+			$list = array_merge($list, $account->getBackups());
+		}
+		usort($list, fn($a, $b) => strcmp($a->get('created_at'), $b->get('created_at')));
+
+		return $list;
+	}
 }

@@ -135,6 +135,34 @@ class Account extends OModel {
 	}
 
 	/**
+	 * Función para obtener el número de backups de una cuenta
+	 */
+	public function getNumBackups(int $id_account): int {
+		$db = new ODB();
+		$sql = "SELECT COUNT(*) AS `num` FROM `backup` WHERE `id_account` = ?";
+		$db->query($sql, [$this->get('id')]);
+
+		$res = $db->next();
+
+		return intval($res['num']);
+	}
+
+	/**
+	 * Función para obtener la copia de seguridad más antigua de una cuenta
+	 */
+	public function getOldestBackup(): Backup {
+		$db = new ODB();
+		$sql = "SELECT * FROM `backup` WHERE `id_account` = ? ORDER BY `created_at` ASC LIMIT 0,1";
+		$db->query($sql, [$this->get('id')]);
+
+		$res = $db->next();
+		$b = new Backup();
+		$b->update($res);
+
+		return $b;
+	}
+
+	/**
 	 * Función para borrar una cuenta y todas sus copias de seguridad
 	 *
 	 * @return void
