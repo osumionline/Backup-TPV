@@ -38,14 +38,14 @@ class generalService extends OService {
 	 *
 	 * @return array Lista de backups
 	 */
-	public function getSubscriptionBackupList(): array {
+	public function getSubscriptionBackupList(Subscription $subscription): array {
 		$list = [];
 
 		$accounts = $subscription->getAccounts();
 		foreach ($accounts as $account) {
 			$list = array_merge($list, $account->getBackups());
 		}
-		usort($list, fn($a, $b) => strcmp($a->get('created_at'), $b->get('created_at')));
+		usort($list, fn($a, $b) => strcmp($b->get('created_at'), $a->get('created_at')));
 
 		return $list;
 	}

@@ -4,7 +4,7 @@ null
 {
 	"id": <?php echo $values['backup']->get('id') ?>,
 	"idAccount": <?php echo $values['backup']->get('id_account') ?>,
-	"account": "<?php echo urlencode($values['backup']->getAccount()->getName()) ?>",
+	"account": "<?php echo urlencode($values['backup']->getAccount()->get('name')) ?>",
 	"date": "<?php echo $values['backup']->get('created_at', 'd/m/Y H:i') ?>"
 }
 <?php endif ?>
