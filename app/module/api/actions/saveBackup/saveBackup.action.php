@@ -41,6 +41,7 @@ class saveBackupAction extends OAction {
 						// Si la cuenta ya tiene el máximo de backups, borro el más antiguo
 						if ($this->getConfig()->getExtra('max_backups') == $account->getNumBackups()) {
 							$oldest_backup = $account->getOldestBackup();
+							$this->getLog()->info('Borro copia de seguridad antigua: '.$oldest_backup->get('id'));
 							$oldest_backup->deleteFull();
 						}
 						// Creo la nueva copia de seguridad
@@ -50,7 +51,7 @@ class saveBackupAction extends OAction {
 
 						// Guardo el archivo recibido
 						$file_path = $backup->getFilePath();
-						file_put_contents($file_path, $file);
+						move_uploaded_file($file['tmp_name'], $file_path);
 
 						$account->set('last_copy_at', $backup->get('created_at', 'Y-m-d H:i:s'));
 						$account->save();
